@@ -1,8 +1,8 @@
 /**
  * @file tabamoejs_u1l_inlab_exer4.c
  * @author Euan Jed Tabamo
- * @brief This program implements a Binary Search Tree (BST) with basic insert
- * and search functions.
+ * @brief This program implements a Binary Search Tree (BST) with basic insert,
+ * delete, and search functions.
  * @version 0.2
  * @date 2024-10-01
  *
@@ -296,7 +296,7 @@ int delete(BST *B, int key) {
 void clear(BST *B) {
     // Clear the tree nodes
     freeTree(B->root);
-    B->root=NULL;
+    B->root = NULL;
 }
 
 // Traversal Functions
