@@ -1,10 +1,10 @@
 /**
- * @file tabamoejs_u1l_inlab_exer3.c
+ * @file tabamoejs_u1l_inlab_exer4.c
  * @author Euan Jed Tabamo
  * @brief This program implements a Binary Search Tree (BST) with basic insert
  * and search functions.
- * @version 0.1
- * @date 2024-09-21
+ * @version 0.2
+ * @date 2024-10-01
  *
  * @copyright Copyright (c) 2024
  *
@@ -288,16 +288,15 @@ int delete(BST *B, int key) {
 
     // Obtain the updated root node after deleting the desired node
     B->root = deleteNode(B->root, key);
-    
 
     // Currently unused
     return key;
 }
 
 void clear(BST *B) {
-    // Clear the tree nodes then clear the BST itself
+    // Clear the tree nodes
     freeTree(B->root);
-    free(B);
+    B->root=NULL;
 }
 
 // Traversal Functions
@@ -534,7 +533,6 @@ void freeTree(BST_NODE *node) {
     free(node);
 }
 
-
 /**
  * @brief Main function to run the program
  *
@@ -595,9 +593,51 @@ int main() {
             inorderWalk(B);
             printf("\n");
             break;
-
+        case 'm':
+            node = minimum(B->root);
+            if (node)
+                printf("Minimum value: %d\n", node->key);
+            else
+                printf("(BST empty)\n");
+            break;
+        case 'M':
+            node = maximum(B->root);
+            if (node)
+                printf("Maximum value: %d\n", node->key);
+            else
+                printf("(BST empty)\n");
+            break;
+        case 'C':
+            printf("Removing all contents.\n");
+            clear(B);
+            break;
+        /* uncomment this for postlab
+        case '[':
+            scanf("%d", &key);
+            node = search(B, key);
+            if(!node){
+                printf("%d not found\n", key);
+            }else{
+                node = predecessor(node);
+                if(node)printf("Predecessor of %d is %d.\n", key, node->key);
+                else printf("No predecessor for %d\n", key);
+            }
+            break;
+        case ']':
+            scanf("%d", &key);
+            node = search(B, key);
+            if(!node){
+                printf("%d not found\n", key);
+            }else{
+                node = successor(node);
+                if(node)printf("Successor of %d is %d.\n", key, node->key);
+                else printf("No successor for %d\n", key);
+            }
+            break;
+        */
         case 'Q':
             clear(B);
+            free(B);
             return 0;
         default:
             printf("Unknown command: %c\n", command);
