@@ -1,6 +1,9 @@
 {
     "files.associations": {
         "*.rpy": "renpy",
-        "stdio.h": "c"
+        "*.rmd": "markdown",
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "bst.h": "c"
     }
 }
