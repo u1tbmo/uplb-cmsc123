@@ -184,6 +184,32 @@ int deleteM(HEAP *H) {
     return m;
 }
 
+int *heapSort(HEAP *H) {
+    // Create a copy of the heap
+    HEAP *copy = createHeap(H->maxSize);
+
+    // Copy the heap values to the copy
+    for (int i = 1; i <= H->size; i++) {
+        copy->heap[i] = H->heap[i];
+        copy->size++;
+    }
+
+    // Create an array to store the sorted values
+    int *sorted = (int *)malloc((H->size + 1) * sizeof(int));
+
+    // Perform deletion on the copy and store the values in the array in reverse
+    for (int i = 1; i <= H->size; i++) {
+        sorted[H->size - i + 1] = deleteM(copy);
+    }
+
+    // Free the copy
+    free(copy->heap);
+    free(copy);
+
+    // Return the sorted array
+    return sorted;
+}
+
 int main() {
 
     char command;
@@ -220,7 +246,6 @@ int main() {
             printf("Removing all contents...\n");
             clear(H);
             break;
-        /* uncomment this for postlab
         case '~':
             printf("The sorted version of the heap:\n");
             sorted = heapSort(H);
@@ -229,7 +254,6 @@ int main() {
             printf("\n");
             free(sorted);
             break;
-        */
         case 'Q':
             free(H->heap);
             free(H);
