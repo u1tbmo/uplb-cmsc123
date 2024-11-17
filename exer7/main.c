@@ -1,8 +1,8 @@
 /*
  * Name: Tabamo, Euan Jed S.
  * Lab Section:  U1L
- * Program Description: Implements a minheap with basic insert and delete
- * functionality.
+ * Program Description: Implements a minheap with insert, delete
+ * and heapsort functionality.
  */
 
 #include "heap.h"
