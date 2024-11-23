@@ -194,12 +194,17 @@ int *heapSort(HEAP *H) {
         copy->size++;
     }
 
+    // Perform deletions to sort the heap
+    for (int i = 0; i < H->size; i++) {
+        deleteM(copy);
+    }
+
     // Create an array to store the sorted values
     int *sorted = (int *)malloc((H->size + 1) * sizeof(int));
 
-    // Perform deletion on the copy and store the values in the array in reverse
+    // Copy the sorted values from the heap to the array
     for (int i = 1; i <= H->size; i++) {
-        sorted[H->size - i + 1] = deleteM(copy);
+        sorted[i] = copy->heap[i];
     }
 
     // Free the copy
