@@ -1,0 +1,16 @@
+5
++ k:a d:a
++ k:c d:c
++ k:d d:d
+p
+? k:a d:a
+? k:c d:c
+? k:d d:d
+p
+- c
+p
+? k:a d:a
+? k:c d:c
+? k:d d:d
+p
+Q

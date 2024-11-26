@@ -1,0 +1,28 @@
+5
++ k:B d:B
++ k:L d:L
++ k:V d:V
+p
+- L
+p
+- V
+p
+- B
+p
++ k:L d:L
++ k:V d:V
++ k:B d:B
+p
+- L
+p
+- B
+p
++ k:B d:B
+p
+- V
+p
+- B
+p
+C
+p
+Q
