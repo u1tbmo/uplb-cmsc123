@@ -153,7 +153,6 @@ void dfs(GRAPH *G, int start) {
 
     // Create a visited array
     int *visited = createVisited(G);
-    visited[start] = 1; // Visit the source node, index already adjusted in main
 
     // Push the source node to the stack
     push(stack, createNode(start));
@@ -162,10 +161,12 @@ void dfs(GRAPH *G, int start) {
     while (!isEmpty(stack)) {
         // Visit the TOS (and print)
         int u = pop(stack);
-        printf("%d ", u + 1);
-        visited[u] = 1;
+        if (!visited[u]) {
+            visited[u] = 1;
+            printf("%d ", u + 1);
+        }
 
-        // Push unvisited vertices adjacent to u to the TOS
+        // Push vertices adjacent to u to the TOS
         // We traverse the array in reverse since we want
         // the head to be the smallest index (LIFO)
         for (int v = G->num_vertices; v >= 0; v--) {
