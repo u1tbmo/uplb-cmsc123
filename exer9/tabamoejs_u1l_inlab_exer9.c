@@ -192,7 +192,9 @@ void printMatrix(GRAPH *G) {
 
 void freeMatrix(GRAPH *G) {
     if (G != NULL) {
+        // Free the outer array
         if (G->matrix != NULL) {
+            // Free the inner arrays
             for (int i = 0; i < G->num_vertices; i++) {
                 free(G->matrix[i]);
                 G->matrix[i] = NULL;
