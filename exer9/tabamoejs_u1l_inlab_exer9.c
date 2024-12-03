@@ -122,7 +122,7 @@ GRAPH *createGraph(int vertices) {
 
 void insertEdge(GRAPH *G, int u, int v) {
     // Ensure the edge is valid for the graph.
-    if (u < 0 || v < 0 || u > G->num_vertices || v > G->num_vertices) {
+    if (u < 0 || v < 0 || u > G->num_vertices - 1 || v > G->num_vertices - 1) {
         return;
     }
 
