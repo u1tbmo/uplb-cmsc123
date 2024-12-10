@@ -41,6 +41,7 @@ NODE *createNode(int data) {
 
     // Initialize value of the node
     newNode->value = data;
+    newNode->next = NULL;
 
     return newNode;
 }
@@ -122,7 +123,7 @@ GRAPH *createGraph(int vertices) {
 
 void insertEdge(GRAPH *G, int u, int v) {
     // Ensure the edge is valid for the graph.
-    if (u < 0 || v < 0 || u > G->num_vertices - 1 || v > G->num_vertices - 1) {
+    if (u < 0 || v < 0 || u > G->num_vertices || v > G->num_vertices) {
         return;
     }
 
@@ -169,7 +170,7 @@ void dfs(GRAPH *G, int start) {
         // Push vertices adjacent to u to the TOS
         // We traverse the array in reverse since we want
         // the head to be the smallest index (LIFO)
-        for (int v = G->num_vertices; v >= 0; v--) {
+        for (int v = G->num_vertices - 1; v >= 0; v--) {
             if (G->matrix[u][v] == 1 && !visited[v]) {
                 push(stack, createNode(v));
             }
@@ -211,7 +212,6 @@ int main() {
     char command;
     int vertices, u, v;
 
-    printf("QUEEN NEVER CRY!\n");
     scanf("%d", &vertices);
     GRAPH *G = createGraph(vertices);
 
