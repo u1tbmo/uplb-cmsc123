@@ -77,6 +77,7 @@ int pop(STACK *L) {
     // Stack underflow if empty
     if (isEmpty(L)) {
         printf("Stack underflow!\n");
+        return -1;
     }
 
     // Delete the TOS
