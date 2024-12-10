@@ -166,14 +166,13 @@ void dfs(GRAPH *G, int start) {
         if (!visited[u]) {
             visited[u] = 1;
             printf("%d ", u + 1);
-        }
-
-        // Push vertices adjacent to u to the TOS
-        // We traverse the array in reverse since we want
-        // the head to be the smallest index (LIFO)
-        for (int v = G->num_vertices - 1; v >= 0; v--) {
-            if (G->matrix[u][v] == 1 && !visited[v]) {
-                push(stack, createNode(v));
+            // Push vertices adjacent to u to the TOS
+            // We traverse the array in reverse since we want
+            // the head to be the smallest index (LIFO)
+            for (int v = G->num_vertices - 1; v >= 0; v--) {
+                if (G->matrix[u][v] == 1 && !visited[v]) {
+                    push(stack, createNode(v));
+                }
             }
         }
     }
@@ -222,9 +221,8 @@ int main() {
         switch (command) {
         case '+':
             scanf(" %d %d", &u, &v);
-            insertEdge(
-                G, u - 1,
-                v - 1); // there's a -1 since we use 0-indexing in the arrays
+            insertEdge(G, u - 1,
+                       v - 1); // there's a -1 since we use 0-indexing in the arrays
             printf("Successfully inserted edge %d %d\n", u, v);
             break;
         case '#':
